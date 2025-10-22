@@ -92,15 +92,17 @@ function LaserFlowBoxExample() {
             margin: "0 auto",
             marginBottom: "1rem", // reduce gap to the features section
             // align hero to the right side of the page so its DOM box matches the visible image/animations
-            marginLeft: "auto",
-            marginRight: "8%",
+              marginLeft: "auto",
+              marginRight: "6%",
             width: "70%",
             maxWidth: "1000px",
             aspectRatio: "16 / 9",
             backgroundImage:
               "url(https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2Fb%2Fd%2F7%2F6%2F4%2Fb%2Fbd764bb25d49a05105060185774ba14cd2c846f7.jpg&w=4500&q=100)",
             backgroundSize: "cover",
-            backgroundPosition: "center",
+                // prefer the right side of the image so the visible subject sits to the right of the hero box
+                // nudge the image further right so the subject sits closer to the card's right edge
+                backgroundPosition: "95% center",
             backgroundRepeat: "no-repeat",
             borderRadius: "20px",
             border: `3px solid ${laserColor}`,
@@ -135,3 +137,4 @@ function App() {
 }
 
 export default App;
+ 

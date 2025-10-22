@@ -131,9 +131,17 @@ export default function FloatingWindows({ count = 2 }) {
       // choose phrase
       el.textContent = pick(phrases);
 
-      // position anywhere randomly inside container (allow near edges)
-      const left = rand(2, 98);
-      const top = rand(2, 98);
+      // position — bias toward the right side of the hero box so visuals sit to the right
+      // Use a weighted choice: 70% of spawns land on the right half (60-95%), 30% anywhere (2-98%)
+      const chooseLeft = () => {
+        if (Math.random() < 0.7) {
+          // right bias
+          return rand(60, 95);
+        }
+        return rand(2, 98);
+      };
+      const left = chooseLeft();
+      const top = rand(8, 88);
       el.style.left = `${left}%`;
       el.style.top = `${top}%`;
 
