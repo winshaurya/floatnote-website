@@ -1,9 +1,18 @@
 .laser-flow-container {
-  
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   pointer-events: none;
   z-index: 100;
+}
+
+/* DEBUG: visible highlight for mounts using the 'laser-left' class.
+   Remove or set display: none once positioning is verified. */
+.laser-flow-container.laser-left {
+  outline: 2px dashed rgba(255, 0, 120, 0.85);
+  background: rgba(255, 0, 120, 0.06);
+  /* keep pointer-events none so it doesn't block interactions */
+  pointer-events: none;
 }

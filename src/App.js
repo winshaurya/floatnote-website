@@ -17,7 +17,6 @@ function LaserFlowBoxExample() {
       const rect = heroRef.current.getBoundingClientRect();
       console.log("Hero box position: x=", rect.left, "y=", rect.top);
     }
-    // Laser removed: no laserRef to log
   }, []);
 
   // Global mousemove handler so reveal effect follows cursor even when overlay has pointer-events:none
@@ -32,14 +31,10 @@ function LaserFlowBoxExample() {
     return () => window.removeEventListener("mousemove", handler);
   }, []);
 
-  // Laser removed: no alignment or resize observers needed
-
   return (
-      <div>
-        {/* CardNav component removed as part of cleanup */}
+    <div>
+      <Navbar logo={logo} repoUrl="https://github.com/winshaurya/floatnote" />
 
-  <Navbar logo={logo} repoUrl="https://github.com/winshaurya/floatnote" />
-      
       {/* Fixed background particles */}
       <Particles
         particleColors={[laserColor]}
@@ -53,11 +48,11 @@ function LaserFlowBoxExample() {
         style={{ position: "fixed", inset: 0, zIndex: 10, pointerEvents: "none" }}
       />
 
-      {/* Main content container: padding-top keeps space under the fixed navbar */}
+      {/* Main content container */}
       <div
         style={{
           width: "100%",
-          paddingTop: "18vh", // keep ~18% gap from top to hero on first load
+          paddingTop: "18vh",
           backgroundColor: "transparent",
           zIndex: 30
         }}
@@ -79,19 +74,16 @@ function LaserFlowBoxExample() {
           }
         }}
       >
-        {/* LaserFlow removed from landing page */}
-
-        {/* Hero box — now in normal flow (not absolute) so sections stack naturally */}
+        {/* Hero box */}
         <div
           ref={heroRef}
           id="heroBOx"
           aria-label="heroBOx"
           style={{
             position: "relative",
-            // center hero and give small horizontal margins so background covers full width visually
             margin: "0 auto",
             marginBottom: "1rem",
-            width: "calc(100% - 64px)", // leave 32px margin on each side
+            width: "calc(100% - 64px)",
             maxWidth: "1200px",
             aspectRatio: "16 / 9",
             backgroundImage:
@@ -116,9 +108,73 @@ function LaserFlowBoxExample() {
           }}
         >
           <FloatingWindows count={1} />
+
+          <div style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }}>
+            <style>{`
+              .download-cta{
+                transition: transform .18s cubic-bezier(.2,.9,.2,1), box-shadow .18s cubic-bezier(.2,.9,.2,1);
+                z-index:1000;
+                will-change: transform, box-shadow;
+                transform: translate(-50%,-50%) scale(1);
+              }
+              .download-cta:hover{
+                transform: translate(-50%,-50%) scale(1.08);
+                box-shadow: 0 18px 34px rgba(0,0,0,0.26);
+              }
+              .download-cta:active{
+                transform: translate(-50%,-50%) scale(0.98);
+                box-shadow: 0 6px 12px rgba(0,0,0,0.12);
+              }
+              .download-cta:focus-visible{outline:3px solid rgba(11,107,45,0.12); outline-offset:3px;}
+              @media (prefers-reduced-motion: reduce) {
+                .download-cta, .download-cta:hover, .download-cta:active { transition: none !important; transform: translate(-50%,-50%) !important; }
+              }
+            `}</style>
+
+            <div style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', width: '100%', maxWidth: '90%', pointerEvents: 'none' }}>
+              <h1 style={{ margin: 0, color: '#ffffff', fontSize: 'clamp(36px, 6vw, 96px)', lineHeight: 1, fontWeight: 900 }}>Fnote</h1>
+              <div style={{ marginTop: 8, color: '#0b6b2d', fontSize: 'clamp(12px, 1.6vw, 18px)', letterSpacing: '0.02em', fontWeight: 700 }}>Sticky Notes for your Screen</div>
+            </div>
+
+            <a
+              href="https://github.com/winshaurya/floatnote/releases/download/launched/FloatNote.exe"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Download Fnote for Windows"
+              className="download-cta"
+              style={{
+                zIndex: 1000,
+                position: 'absolute',
+                top: '70%',
+                left: '50%',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#ffffff',
+                color: '#0b6b2d',
+                textDecoration: 'none',
+                padding: 'clamp(10px, 1.6vw, 14px) clamp(14px, 2.6vw, 24px)',
+                borderRadius: 12,
+                minWidth: 160,
+                boxShadow: '0 8px 20px rgba(0,0,0,0.12)',
+                fontWeight: 800,
+                fontSize: 'clamp(14px, 1.6vw, 18px)',
+                cursor: 'pointer',
+                border: '2px solid rgba(11,107,45,0.08)',
+                pointerEvents: 'auto'
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                <path d="M12 3v10" stroke="#0b6b2d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M7 10l5 5 5-5" stroke="#0b6b2d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <path d="M21 21H3" stroke="#0b6b2d" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              <span style={{ marginLeft: 10, color: '#0b6b2d' }}>Download for Windows</span>
+            </a>
+          </div>
         </div>
 
-        {/* Features section — now in normal flow below the hero */}
+        {/* Features section */}
         <div style={{ width: "100%", marginTop: "1rem" }}>
           <FeaturesSection />
         </div>

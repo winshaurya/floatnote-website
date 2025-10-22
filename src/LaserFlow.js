@@ -290,7 +290,7 @@ export const LaserFlow = ({
   console.log('LaserFlow mounted');
     const renderer = new THREE.WebGLRenderer({
       antialias: false,
-      alpha: false,
+      alpha: true,
       depth: false,
       stencil: false,
       powerPreference: 'high-performance',
@@ -307,12 +307,26 @@ export const LaserFlow = ({
     renderer.setPixelRatio(currentDprRef.current);
     renderer.shadowMap.enabled = false;
     renderer.outputColorSpace = THREE.SRGBColorSpace;
-    renderer.setClearColor(0x000000, 1);
+    // use transparent clear so only the laser pixels are visible over the hero background
+    renderer.setClearColor(0x000000, 0);
     const canvas = renderer.domElement;
+    // ensure the canvas fills the mount and sits absolutely so rotation / transforms remain visible
+    canvas.style.position = 'absolute';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
     canvas.style.width = '100%';
     canvas.style.height = '100%';
     canvas.style.display = 'block';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.willChange = 'transform';
     mount.appendChild(canvas);
+
+    // DEBUG: outline the canvas when parent mount uses the 'laser-left' class so you can see exact placement.
+    // Remove these lines after confirming the position.
+    if (mount.classList && mount.classList.contains('laser-left')) {
+      canvas.style.outline = '3px dashed rgba(0,255,0,0.95)';
+      canvas.style.background = 'rgba(0,255,0,0.05)';
+    }
 
     const scene = new THREE.Scene();
     const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
@@ -350,10 +364,10 @@ export const LaserFlow = ({
       vertexShader: VERT,
       fragmentShader: FRAG,
       uniforms,
-      transparent: false,
+      transparent: true,
       depthTest: false,
       depthWrite: false,
-      blending: THREE.NormalBlending
+      blending: THREE.AdditiveBlending
     });
 
     const mesh = new THREE.Mesh(geometry, material);
