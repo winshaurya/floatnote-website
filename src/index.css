@@ -1,0 +1,82 @@
+body {
+  margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #2260ea; /* requested blue page background */
+  color: #ffffff; /* ensure text is readable on blue */
+}
+
+code {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.laser-flow-container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  pointer-events: none;
+}
+
+/* Make the app occupy the full viewport and avoid side scrollbars */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, #root {
+  width: 100%;
+}
+
+body {
+  height: auto;
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scrolling */
+  overflow-y: auto; /* allow vertical scrolling */
+}
+
+/* Optional: ensure root is a block formatting context and no unexpected margins */
+#root {
+  display: block;
+}
+
+/* Download button UI (restored) */
+.download-btn-container {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(90deg, #ff8a00 0%, #e52e71 100%);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+  opacity: 0.98;
+}
+
+.download-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+  opacity: 1;
+}
+
+.download-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+.download-btn .icon {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  flex: 0 0 18px;
+}

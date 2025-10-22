@@ -1,0 +1,21 @@
+.particles-container {
+  /* Make the particle layer fixed to the viewport so it doesn't move when scrolling */
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  inset: 0;
+  /* Sit behind page content. Use a low z-index; if your app uses negative stacking contexts you may need to adjust. */
+  z-index: 0;
+  pointer-events: none; /* allow interaction with content above */
+}
+
+/* ensure the canvas fills the container */
+.particles-container canvas {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+  /* Prevent the canvas from capturing pointer events */
+  pointer-events: none;
+}
