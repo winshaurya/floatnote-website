@@ -6,80 +6,46 @@ yarn-error.log*
 package-lock.json
 pnpm-lock.yaml
 
-# Build outputs
+# Build output
 build/
 dist/
-.out/
-coverage/
 
-# Env files
+# Production
 .env
-.env.*.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
 
-# IDEs
-.vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+lerna-debug.log*
 
 # OS files
 .DS_Store
 Thumbs.db
 
-# Logs
-logs/
-*.log
-
-# Static caches
-.cache/
-.parcel-cache/
-
-# Misc
-*.pem
-*.p12
-*.key
+# Editor directories and files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
 
 # Mac
-**/.Spotlight-V100
-**/.Trashes
+.Spotlight-V100
+.Trashes
 
 # Windows
-**/Thumbs.db
-**/ehthumbs.db
+ehthumbs.db
+Desktop.ini
 
-# Exclude local assets or secrets if any
-.local-assets/
+# Misc
+coverage/
+.nyc_output/
+reports/
 
-# Editor temp files
-*~
-*.swp
-
-# Lock files for other package managers
-pnpm-lock.yaml
-
-# Generated files
-build/
-
-# Ignore npm debug
-npm-debug.log*
-
-# Yarn
-.yarn/*
-.pnp.*
-
-# Other
-/.env
-
-# Ignore local test output
-/test-results/
-
-# Keep IDE-specific settings out
-.vscode/
-
-# Allow the public assets folder but ignore tools generated files
-/public/assets/*.psd
-/public/assets/*.ai
+# Static build artifacts sometimes committed
+asset-manifest.json
