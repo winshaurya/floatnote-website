@@ -3,7 +3,6 @@ import Particles from "./Particles";
 import FloatingWindows from "./components/FloatingWindows";
 import FeaturesSection from "./components/FeaturesSection";
 import Navbar from "./components/Navbar";
-import Hero from "./components/Hero";
 
 // use public assets path for logo (public/assets/logo.png)
 const logo = "/assets/logo.png";
@@ -89,16 +88,17 @@ function LaserFlowBoxExample() {
           aria-label="heroBOx"
           style={{
             position: "relative",
-            // keep a small margin from the top (navbar accounted for by container padding)
+            // center hero and give small horizontal margins so background covers full width visually
             margin: "0 auto",
-            marginBottom: "1rem", // reduce gap to the features section
-            marginLeft: "auto",
-            marginRight: "6%",
-            width: "70%",
-            maxWidth: "1000px",
+            marginBottom: "1rem",
+            width: "calc(100% - 64px)", // leave 32px margin on each side
+            maxWidth: "1200px",
             aspectRatio: "16 / 9",
-            // simplified background so the new left content is clearly visible
-            backgroundColor: 'rgba(0,0,0,0.18)',
+            backgroundImage:
+              "url(https://www.wallpaperhub.app/_next/image?url=https%3A%2F%2Fcdn.wallpaperhub.app%2Fcloudcache%2Fb%2Fd%2F7%2F6%2F4%2Fb%2Fbd764bb25d49a05105060185774ba14cd2c846f7.jpg&w=4500&q=100)",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
             borderRadius: "20px",
             border: `3px solid ${laserColor}`,
             boxShadow: `0 20px 40px rgba(0,0,0,0.45), 0 0 30px ${laserColor}44`,
@@ -115,7 +115,6 @@ function LaserFlowBoxExample() {
             alignItems: "flex-start"
           }}
         >
-          <Hero />
           <FloatingWindows count={1} />
         </div>
 
@@ -133,4 +132,3 @@ function App() {
 }
 
 export default App;
- 

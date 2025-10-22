@@ -1,17 +1,12 @@
-# Node
+# Node modules
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-package-lock.json
-pnpm-lock.yaml
 
-# Build output
+# Build outputs
 build/
 dist/
 
 # Production
-.env
+/.env
 .env.local
 .env.development.local
 .env.test.local
@@ -22,19 +17,43 @@ logs
 *.log
 npm-debug.log*
 yarn-debug.log*
-lerna-debug.log*
+yarn-error.log*
 
 # OS files
-.DS_Store
 Thumbs.db
+.DS_Store
 
 # Editor directories and files
 .vscode/
-.idea/
-*.sublime-project
-*.sublime-workspace
+.vscode/*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
 
-# Mac
+# IDE files
+.idea/
+*.iml
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Parcel/Cra / misc
+.cache/
+.parcel-cache/
+coverage/
+*.tgz
+
+# build artifacts from create-react-app
+asset-manifest.json
+service-worker.js
+precache-manifest.*.js
+manifest.json
+
+# macOS
 .Spotlight-V100
 .Trashes
 
@@ -42,10 +61,6 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
-# Misc
-coverage/
-.nyc_output/
-reports/
-
-# Static build artifacts sometimes committed
-asset-manifest.json
+# Lockfiles (if you want to keep them in git, remove these)
+# package-lock.json
+# yarn.lock

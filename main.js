@@ -1,6 +1,12 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
-const isDev = process.env.NODE_ENV === 'development';
+const fs = require('fs');
+
+// Detect dev vs production without relying on environment variables.
+// If a built index.html exists in the `build` folder, assume production.
+// Otherwise assume a development server (localhost:3000) should be used.
+const buildIndex = path.join(__dirname, 'build', 'index.html');
+const isDev = !fs.existsSync(buildIndex);
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -15,10 +21,12 @@ function createWindow() {
   });
 
   if (isDev) {
+    // Development: expect a local dev server on port 3000
     win.loadURL('http://localhost:3000');
     win.webContents.openDevTools();
   } else {
-    win.loadFile(path.join(__dirname, 'build/index.html'));
+    // Production: load the pre-built files from the build folder
+    win.loadFile(path.join(__dirname, 'build', 'index.html'));
   }
 }
 

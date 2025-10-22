@@ -172,7 +172,7 @@ export default function FloatingWindows({ count = 2 }) {
 
     // initial burst (fewer)
     for (let i = 0; i < Math.max(1, count); i++) {
-      const delay = rand(120, 1000);
+      const delay = rand(120, 1200);
       timers.push(setTimeout(spawnOnce, delay));
     }
 
