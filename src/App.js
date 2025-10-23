@@ -131,7 +131,7 @@ function LaserFlowBoxExample() {
               }
             `}</style>
 
-            <div style={{ position: 'absolute', top: '35%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', width: '100%', maxWidth: '90%', pointerEvents: 'none' }}>
+            <div style={{ position: 'absolute', top: '27%', left: '50%', transform: 'translate(-50%, -50%)', textAlign: 'center', width: '100%', maxWidth: '90%', pointerEvents: 'none' }}>
               <h1 style={{ margin: 0, color: '#ffffff', fontSize: 'clamp(36px, 6vw, 96px)', lineHeight: 1, fontWeight: 900 }}>Fnote</h1>
               <div style={{ marginTop: 8, color: '#0b6b2d', fontSize: 'clamp(12px, 1.6vw, 18px)', letterSpacing: '0.02em', fontWeight: 700 }}>Sticky Notes for your Screen</div>
             </div>
